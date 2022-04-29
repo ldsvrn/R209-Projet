@@ -1,0 +1,37 @@
+{% extends "template.html" %}
+
+{% block title %}Liste des OS{% endblock title %}
+
+{% block h1 %}Liste des OS{% endblock h1 %} 
+
+{% block sidebar %}
+<ul>
+    <li><a href="/os/add">Ajouter</a></li>
+</ul>
+{% endblock sidebar %}
+
+{% block content %}
+    {% for os in operatingsystem %}
+    <table class="table is-fullwidth is-hoverable">
+        <thead>
+        <tr>
+            <th><abbr title="ID">ID</abbr></th>
+            <th>Name</th>
+            <th>Developer</th>
+            <th>License</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th><a href="/os/details/{{os.id}}/">{{os.id}}</th>
+            <td>{{os.name}}</td>
+            <td>{{os.developer}}</td>
+            <td>{{os.software_license}}</td>
+            <td><a href="/os/details/{{os.id}}/">Détails</a><td>
+            <td><a href="/os/edit/{{os.id}}/">Modifier</a><td>
+            <td><a href="/os/delete/{{os.id}}/">Supprimer</a><td>
+        </tr>
+        </tbody>
+    </table>
+    {% endfor %}
+{% endblock content %}
