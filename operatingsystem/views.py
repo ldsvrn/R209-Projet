@@ -1,13 +1,14 @@
 from pyexpat import model
 from django.shortcuts import render
-from .forms import OSForm
+from .forms import OSForm, VersionForm
 from . import models
 from django.http import HttpResponseRedirect
 from django.forms.models import model_to_dict
 
+### CONTENANT
 
 def list_os(request):
-    return render(request, "os/show_os.html",{"operatingsystem" : models.operatingsystem.objects.all() })
+    return render(request, "os/list_os.html",{"operatingsystem" : models.operatingsystem.objects.all() })
 
 def add_os(request):
     if request.method == "POST": 
@@ -63,58 +64,21 @@ def save_edit_os(request, id):
     else:
         return render(request, "os/edit_os.html", {"form": osform, "id": id})
 
-"""
-def ajout(request):
+
+### CONTENU
+def list_ver(request):
+    return render(request, "ver/list.html",{"versions" : models.versions.objects.all()})
+
+def add_ver(request):
     if request.method == "POST": 
     # arrive en cas de retour sur cette page après une saisie invalide on récupère donc les données. 
     # Normalement nous ne devrions pas passer par ce chemin la pour le traitement des données
-        form = LivreForm(request)
+        form = VersionForm(request)
         if form.is_valid(): # validation du formulaire.
-            livre = form.save() # sauvegarde dans la base
-            return render(request,"affiche.html",{"livre" : livre}) # envoie vers une page d'affichage du livre créé
+            ver = form.save() # sauvegarde dans la base
+            return list_os(request)
         else:
-            return render(request,"ajout.html",{"form": form})
+            return render(request,"ver/add.html",{"form": form})
     else :
-        form = LivreForm() # création d'un formulaire vide
-        return render(request,"ajout.html",{"form" : form})
-
-def traitement(request):
-    lform = LivreForm(request.POST)
-    if lform.is_valid():
-        livre = lform.save()
-        return render(request,"affiche.html",{"livre" : livre})
-    else:
-        return render(request,"ajout.html",{"form": lform})
-
-def show(request):
-    return render(request,"show.html",{"Livre" : models.Livre.objects.all() })
-
-def read(request, id):
-    return render(request,"read.html",{"livre" : models.Livre.objects.get(pk=id)})
-
-
-def update(request, id):
-    livre = models.Livre.objects.get(pk=id)
-    lform = LivreForm(model_to_dict(livre))
-    print(lform)
-    if request.method == "POST": 
-        form = LivreForm(request)
-        if form.is_valid(): # validation du formulaire.
-            livre = form.save() # sauvegarde dans la base
-            return render(request,"affiche.html",{"livre" : livre}) # envoie vers une page d'affichage du livre créé
-        else:
-            return render(request,"ajout.html",{"form": form})
-    else :
-        return render(request, "update.html", {"form": lform,"id":id})
-
-
-def updatedb(request, id):
-    lform = LivreForm(request.POST)
-    if lform.is_valid():
-        livre = lform.save(commit=False)
-        livre.id = id;
-        livre.save()
-        return HttpResponseRedirect("/crud/show/")
-    else:
-        return render(request, "update.html", {"form": lform, "id": id})
-"""
+        form = VersionForm() # création d'un formulaire vide
+        return render(request,"ver/add.html",{"form" : form})

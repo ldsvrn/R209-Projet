@@ -7,7 +7,7 @@ class operatingsystem(models.Model):
     software_license = models.CharField(max_length = 100)
 
     def __str__(self) -> str:
-        return f"{self.name} developpé par {self.developer} avec une license {self.software_license}"
+        return f"{self.name} developpé par {self.developer} avec une license {self.software_license}."
 
 
 class versions(models.Model):
@@ -17,5 +17,5 @@ class versions(models.Model):
     platforms = models.CharField(max_length = 100)
 
     def __str__(self) -> str:
-        return f"{self.name} paru le {self.release_date} supporte {self.platforms}"
+        return f"{self.name} paru le {self.release_date} supporte {self.platforms}."
 
