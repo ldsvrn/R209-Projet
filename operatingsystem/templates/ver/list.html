@@ -1,12 +1,12 @@
 {% extends "template.html" %}
 
-{% block title %}Liste des OS{% endblock title %}
+{% block title %}Liste des version{% endblock title %}
 
-{% block h1 %}Liste des OS{% endblock h1 %} 
+{% block h1 %}Liste des version{% endblock h1 %} 
 
 {% block sidebar %}
 <ul>
-    <li><a href="/os/add">Ajouter</a></li>
+    <li><a href="/ver/add">Ajouter</a></li>
 </ul>
 {% endblock sidebar %}
 
@@ -23,13 +23,13 @@
         </thead>
         <tbody>
         <tr>
-            <th><a href="/os/details/{{os.id}}/">{{os.id}}</th>
+            <th><a href="/ver/details/{{os.id}}/">{{os.id}}</th>
             <td>{{os.name}}</td>
             <td>{{os.developer}}</td>
             <td>{{os.software_license}}</td>
-            <td><a href="/os/details/{{os.id}}/">Détails</a><td>
-            <td><a href="/os/edit/{{os.id}}/">Modifier</a><td>
-            <td><a href="/os/delete/{{os.id}}/">Supprimer</a><td>
+            <td><a href="/ver/details/{{os.id}}/">Détails</a><td>
+            <td><a href="/ver/edit/{{os.id}}/">Modifier</a><td>
+            <td><a href="/ver/delete/{{os.id}}/">Supprimer</a><td>
         </tr>
         </tbody>
     </table>

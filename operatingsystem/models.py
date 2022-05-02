@@ -14,7 +14,7 @@ class versions(models.Model):
     operating_system = models.ForeignKey(operatingsystem, on_delete=models.CASCADE)
     name = models.CharField(max_length = 100) 
     release_date = models.DateField(blank=True, null = True)
-    platforms = models.CharField(max_length = 100)
+    platforms = models.CharField(max_length = 100, null = True)
 
     def __str__(self) -> str:
         return f"{self.name} paru le {self.release_date} supporte {self.platforms}."

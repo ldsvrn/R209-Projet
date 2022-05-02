@@ -14,6 +14,6 @@ class OSForm(ModelForm):
 
 class VersionForm(Form):
     operating_system = MultipleChoiceField(choices=[(c.id,c.name) for c in models.operatingsystem.objects.all()])
-    nom = CharField(max_length = 100)
+    name = CharField(max_length = 100)
     release_date = DateField(widget=NumberInput(attrs={'type': 'date','id':'datepick'}))
     platform = CharField(max_length = 100)

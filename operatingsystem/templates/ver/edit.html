@@ -1,19 +1,19 @@
 {% extends "template.html" %}
 
-{% block title %}Modifier un OS{% endblock title %}
+{% block title %}Modifier une version{% endblock title %}
 
-{% block h1 %}Modifier un OS{% endblock h1 %} 
+{% block h1 %}Modifier une version{% endblock h1 %} 
 
 {% block sidebar %}
 <ul>
-    <li><a href="/os/list">Retour</a></li>
+    <li><a href="/ver/list">Retour</a></li>
 </ul>
 {% endblock sidebar %}
 
 {% block content %}
-<form method="post" action="/os/save_edit/{{id}}/">
+<form method="post" action="/ver/save_edit/{{id}}/">
     {% csrf_token %}
     {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste-->
-    <input type="submit" value="envoyer les données"\>
+    <input type="submit" value="Valider"\>
 </form>
 {% endblock content %}

@@ -17,7 +17,7 @@ def add_os(request):
         form = OSForm(request)
         if form.is_valid(): # validation du formulaire.
             opesys = form.save() # sauvegarde dans la base
-            return list_os(request)
+            return HttpResponseRedirect("/os/list")
         else:
             return render(request,"os/add_os.html",{"form": form})
     else :
@@ -28,7 +28,7 @@ def save_os(request):
     osform = OSForm(request.POST)
     if osform.is_valid():
         opesys = osform.save()
-        return list_os(request)
+        return HttpResponseRedirect("/os/list")
     else:
         return render(request,"os/add_os.html",{"form": osform})
 
@@ -66,6 +66,15 @@ def save_edit_os(request, id):
 
 
 ### CONTENU
+def __saveverform(form):
+    print(form.cleaned_data.get("operating_system"))
+    return models.versions(
+        operating_system=models.operatingsystem.objects.get(id=int(form.cleaned_data.get("operating_system")[0])),
+        name=form.cleaned_data.get("name"),
+        release_date=form.cleaned_data.get("date"),
+        platforms=form.cleaned_data.get("platforms")
+        )
+
 def list_ver(request):
     return render(request, "ver/list.html",{"versions" : models.versions.objects.all()})
 
@@ -75,10 +84,49 @@ def add_ver(request):
     # Normalement nous ne devrions pas passer par ce chemin la pour le traitement des données
         form = VersionForm(request)
         if form.is_valid(): # validation du formulaire.
-            ver = form.save() # sauvegarde dans la base
+            ver = __saveverform(form).save()
             return list_os(request)
         else:
             return render(request,"ver/add.html",{"form": form})
     else :
         form = VersionForm() # création d'un formulaire vide
         return render(request,"ver/add.html",{"form" : form})
+
+def save_ver(request):
+    form = VersionForm(request.POST)
+    if form.is_valid():
+        ver = __saveverform(form).save()
+        return HttpResponseRedirect("/ver/list")
+    else:
+        return render(request,"ver/add.html",{"form": form})
+
+def details_ver(request, id):
+    return render(request,"ver/details.html",{"version" : models.versions.objects.get(pk=id)})
+
+def delete_ver(request, id):
+    models.versions.objects.filter(id=id).delete()
+    return HttpResponseRedirect("/ver/list")
+
+def edit_ver(request, id):
+    ver = models.versions.objects.get(pk=id)
+    verform = VersionForm(model_to_dict(ver))
+    print(ver)
+    if request.method == "POST": 
+        form = VersionForm(request)
+        if form.is_valid(): # validation du formulaire.
+            ver = form.save() # sauvegarde dans la base
+            return render(request,"ver/details.html",{"version" : ver}) # envoie vers une page d'affichage du livre créé
+        else:
+            return render(request,"ver/add.html",{"form": form})
+    else :
+        return render(request, "ver/edit.html", {"form": verform,"id":id})
+
+def save_edit_ver(request, id):
+    verform = OSForm(request.POST)
+    if verform.is_valid():
+        ver = ver.save(commit=False)
+        ver.id = id;
+        ver.save()
+        return list_os(request)
+    else:
+        return render(request, "ver/edit.html", {"form": verform, "id": id})

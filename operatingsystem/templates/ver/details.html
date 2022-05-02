@@ -1,6 +1,6 @@
 {% extends "template.html" %}
 
-{% block title %}Détails de l'OS{% endblock title %}
+{% block title %}Détails de la version{% endblock title %}
 
 {% block h1 %}
     Détails de l'OS
@@ -8,11 +8,11 @@
 
 {% block sidebar %}
 <ul>
-    <li><a href="/os/list">Retour</a></li>
+    <li><a href="/ver/list">Retour</a></li>
 </ul>
-{% endblock sidebar %}&
+{% endblock sidebar %}
 
 {% block content %}
     <p>{{operatingsystem}} (ID: {{operatingsystem.id}})</p>
-    <a href="/os/edit/{{operatingsystem.id}}">Modifier</a>
+    <a href="/ver/edit/{{operatingsystem.id}}">Modifier</a>
 {% endblock content %}
