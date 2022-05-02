@@ -11,7 +11,7 @@
 {% endblock sidebar %}
 
 {% block content %}
-    {% for os in operatingsystem %}
+    {% for ver in versions %}
     <table class="table is-fullwidth is-hoverable">
         <thead>
         <tr>
@@ -23,13 +23,14 @@
         </thead>
         <tbody>
         <tr>
-            <th><a href="/ver/details/{{os.id}}/">{{os.id}}</th>
-            <td>{{os.name}}</td>
-            <td>{{os.developer}}</td>
-            <td>{{os.software_license}}</td>
-            <td><a href="/ver/details/{{os.id}}/">Détails</a><td>
-            <td><a href="/ver/edit/{{os.id}}/">Modifier</a><td>
-            <td><a href="/ver/delete/{{os.id}}/">Supprimer</a><td>
+            <th><a href="/ver/details/{{ver.id}}/">{{ver.id}}</th>
+            <td>{{operating_system.name}}</td>
+            <td>{{ver.name}}</td>
+            <td>{{ver.release_date}}</td>
+            <td>{{ver.platforms}}</td>
+            <td><a href="/ver/details/{{ver.id}}/">Détails</a><td>
+            <td><a href="/ver/edit/{{ver.id}}/">Modifier</a><td>
+            <td><a href="/ver/delete/{{ver.id}}/">Supprimer</a><td>
         </tr>
         </tbody>
     </table>

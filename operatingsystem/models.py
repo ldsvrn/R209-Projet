@@ -17,5 +17,5 @@ class versions(models.Model):
     platforms = models.CharField(max_length = 100, null = True)
 
     def __str__(self) -> str:
-        return f"{self.name} paru le {self.release_date} supporte {self.platforms}."
+        return f"{self.name}, version de {self.operating_system.name} paru le {self.release_date} supporte {self.platforms}."
 

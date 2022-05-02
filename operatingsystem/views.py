@@ -67,13 +67,15 @@ def save_edit_os(request, id):
 
 ### CONTENU
 def __saveverform(form):
-    print(form.cleaned_data.get("operating_system"))
-    return models.versions(
+    print(form.cleaned_data.get("name"))
+    temp = models.versions(
         operating_system=models.operatingsystem.objects.get(id=int(form.cleaned_data.get("operating_system")[0])),
         name=form.cleaned_data.get("name"),
-        release_date=form.cleaned_data.get("date"),
+        release_date=form.cleaned_data.get("release_date"),
         platforms=form.cleaned_data.get("platforms")
-        )
+    )
+    print(temp)
+    tamere = temp.save()
 
 def list_ver(request):
     return render(request, "ver/list.html",{"versions" : models.versions.objects.all()})
@@ -84,7 +86,7 @@ def add_ver(request):
     # Normalement nous ne devrions pas passer par ce chemin la pour le traitement des données
         form = VersionForm(request)
         if form.is_valid(): # validation du formulaire.
-            ver = __saveverform(form).save()
+            __saveverform(form)
             return list_os(request)
         else:
             return render(request,"ver/add.html",{"form": form})
@@ -95,7 +97,7 @@ def add_ver(request):
 def save_ver(request):
     form = VersionForm(request.POST)
     if form.is_valid():
-        ver = __saveverform(form).save()
+        __saveverform(form)
         return HttpResponseRedirect("/ver/list")
     else:
         return render(request,"ver/add.html",{"form": form})
