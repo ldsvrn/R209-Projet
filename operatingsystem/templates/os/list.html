@@ -7,6 +7,7 @@
 {% block sidebar %}
 <ul>
     <li><a href="/os/add">Ajouter</a></li>
+    <li><a href="/ver/list">List des versions</a></li>
 </ul>
 {% endblock sidebar %}
 
@@ -28,6 +29,7 @@
             <td>{{os.developer}}</td>
             <td>{{os.software_license}}</td>
             <td><a href="/os/details/{{os.id}}/">Détails</a><td>
+            <td><a href="/os/versions/{{os.id}}/">Versions</a><td>
             <td><a href="/os/edit/{{os.id}}/">Modifier</a><td>
             <td><a href="/os/delete/{{os.id}}/">Supprimer</a><td>
         </tr>

@@ -11,6 +11,7 @@ urlpatterns = [
     path('os/delete/<int:id>/', views.delete_os),
     path('os/edit/<int:id>/', views.edit_os),
     path('os/save_edit/<int:id>/', views.save_edit_os),
+    path('os/versions', views.list_os_versions),
     
     # URLS VERSIONS
     path('ver/add/', views.add_ver),
@@ -19,5 +20,5 @@ urlpatterns = [
     path('ver/details/<int:id>/', views.details_ver),
     path('ver/delete/<int:id>/', views.delete_ver),
     path('ver/edit/<int:id>/', views.edit_ver),
-    path('ver/save_edit/<int:id>/', views.save_edit_ver),
+    path('ver/save_edit/<int:id>/', views.save_edit_ver)
 ]
