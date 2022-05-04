@@ -15,4 +15,31 @@
 {% block content %}
     <p>{{operatingsystem}} (ID: {{operatingsystem.id}})</p>
     <a href="/os/edit/{{operatingsystem.id}}">Modifier</a>
+
+    <h2>Liste des versions</h2>
+    {% for ver in versions %}
+    <table class="table is-fullwidth is-hoverable">
+        <thead>
+        <tr>
+            <th><abbr title="ID">ID</abbr></th>
+            <th>OS</th>
+            <th>Nom</th>
+            <th>Date de sortie</th>
+            <th>Plateforme</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th><a href="/ver/details/{{ver.id}}/">{{ver.id}}</th>
+            <td>{{ver.operating_system.name}}</td>
+            <td>{{ver.name}}</td>
+            <td>{{ver.release_date}}</td>
+            <td>{{ver.platforms}}</td>
+            <td><a href="/ver/details/{{ver.id}}/">Détails</a><td>
+            <td><a href="/ver/edit/{{ver.id}}/">Modifier</a><td>
+            <td><a href="/ver/delete/{{ver.id}}/">Supprimer</a><td>
+        </tr>
+        </tbody>
+    </table>
+    {% endfor %}
 {% endblock content %}

@@ -33,7 +33,9 @@ def save_os(request):
         return render(request,"os/add.html",{"form": osform})
 
 def details(request, id):
-    return render(request,"os/details.html",{"operatingsystem" : models.operatingsystem.objects.get(pk=id)})
+    return render(request,"os/details.html",{
+        "operatingsystem": models.operatingsystem.objects.get(pk=id),
+        "versions": models.versions.objects.filter(operating_system = id)})
 
 def delete_os(request, id):
     models.operatingsystem.objects.filter(id=id).delete()
@@ -116,7 +118,7 @@ def edit_ver(request, id):
     if request.method == "POST": 
         form = VersionForm(request)
         if form.is_valid(): # validation du formulaire.
-            ver = form.save() # sauvegarde dans la base
+            __saveverform(verform)
             return render(request,"ver/details.html",{"version" : ver}) # envoie vers une page d'affichage du livre créé
         else:
             return render(request,"ver/add.html",{"form": form})
@@ -124,14 +126,19 @@ def edit_ver(request, id):
         return render(request, "ver/edit.html", {"form": verform,"id":id})
 
 def save_edit_ver(request, id):
-    verform = OSForm(request.POST)
-    if verform.is_valid():
-        ver = ver.save(commit=False)
-        ver.id = id;
-        ver.save()
+    form = VersionForm(request.POST)
+    if form.is_valid():
+        temp = models.versions(
+            operating_system=models.operatingsystem.objects.get(id=int(form.cleaned_data.get("operating_system")[0])),
+            name=form.cleaned_data.get("name"),
+            release_date=form.cleaned_data.get("release_date"),
+            platforms=form.cleaned_data.get("platforms")
+        )
+        temp.id = id
+        temp.save()
         return list_os(request)
     else:
-        return render(request, "ver/edit.html", {"form": verform, "id": id})
+        return render(request, "ver/edit.html", {"form": form, "id": id})
 
 ## REDIRECTS
 def redirect_os(request):
