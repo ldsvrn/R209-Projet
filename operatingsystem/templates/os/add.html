@@ -4,7 +4,11 @@
 
 {% block h1 %}Ajouter un sysème d'exploitation{% endblock h1 %} 
 
-{% block sidebar %}{% endblock sidebar %}
+{% block sidebar %}
+<ul>
+    <li><a href="/os/list">Retour</a></li>
+</ul>
+{% endblock sidebar %}
 
 {% block content %}
 <form method="post" action="/os/save/">

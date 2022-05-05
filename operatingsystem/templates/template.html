@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{%static 'index.css'%}">
+    <link rel="stylesheet" href="{%static "css/index.css"%}">
     <title>{% block title %} Mon Site {% endblock %}</title>
 </head>
 
 <body>
-    <h1>{% block h1 %}Page{% endblock h1 %}</h1>
+    <h1 id="top">Gestions de système d'exploitation</h1>
     <aside id="sidebar">
         {% block sidebar %}
         <ul>
@@ -18,9 +19,10 @@
     </aside>
     
     <div id="content">
+        <h1>{% block h1 %}Page{% endblock h1 %}</h1>
         {% block content %}
             <h1> bloc principal </h1>
-        {% endblock %}
+        {% endblock %} 
     </div>
 </body>
 </html>
