@@ -5,6 +5,11 @@
 
 #navbar {
     width: 10%;
+    float: left;
+}
+
+#navbar ul {
+    list-style-type: none;
 }
 
 #top {
