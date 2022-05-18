@@ -1,4 +1,5 @@
 {% extends "template.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}Ajouter une version{% endblock title %}
 
@@ -7,7 +8,7 @@
 {% block content %}
 <form method="post" action="/ver/save/">
     {% csrf_token %}
-    {{ form.as_ul }}
+    {{ form|crispy }}
     <input type="submit" class="btn btn-success" value="Valider"\>
 </form>
 {% endblock content %}

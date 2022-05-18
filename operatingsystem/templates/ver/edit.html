@@ -1,19 +1,14 @@
 {% extends "template.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}Modifier une version{% endblock title %}
 
 {% block h1 %}Modifier une version{% endblock h1 %} 
 
-{% block navbar %}
-<ul>
-    <li><a href="/ver/list">Retour</a></li>
-</ul>
-{% endblock navbar %}
-
 {% block content %}
 <form method="post" action="/ver/save_edit/{{id}}/">
     {% csrf_token %}
-    {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste-->
+    {{ form|crispy }}
     <input type="submit" value="Valider"\>
 </form>
 {% endblock content %}

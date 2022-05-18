@@ -1,16 +1,14 @@
 {% extends "template.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}Modifier un OS{% endblock title %}
 
 {% block h1 %}Modifier un OS{% endblock h1 %} 
 
-{% block navbar %}
-{% endblock navbar %}
-
 {% block content %}
 <form method="post" action="/os/save_edit/{{id}}/">
     {% csrf_token %}
-    {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste-->
+    {{ form|crispy }} <!-- permet d'afficher tous les champs sous forme d'une liste-->
     <input type="submit" value="envoyer les données"\>
 </form>
 {% endblock content %}
