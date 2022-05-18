@@ -3,18 +3,28 @@
 <html lang="fr">
 <head>
     {% load static %}
-    <link rel="stylesheet" href="{%static "css/index.css"%}">
+    <link 
+        rel="stylesheet"
+        type="text/css"
+        href="{%static "operatingsystem/css/bootstrap.css"%}"
+    >
     <title>{% block title %} Mon Site {% endblock %}</title>
 </head>
 
 <body>
-    <h1 id="top">Programme de gestions de système d'exploitation</h1>
-    <nav id="navbar">
-        {% block navbar %}
-        <li><a></a></li>
-        <li><a></a></li>
-        {% endblock %}
-        </nav>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/os/list">Projet R209</a>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="/os/list">Liste des OS</a>
+              <a class="nav-link active" aria-current="page" href="/ver/list">Liste des versions</a>
+              {% block navbar %}
+              {% endblock navbar %}
+            </div>
+          </div>
+        </div>
+      </nav>
     
     <div id="content">
         <h1>{% block h1 %}Page{% endblock h1 %}</h1>

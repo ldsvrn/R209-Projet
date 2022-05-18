@@ -5,10 +5,7 @@
 {% block h1 %}Liste des version{% endblock h1 %} 
 
 {% block navbar %}
-<ul>
-    <li><a href="/ver/add">Ajouter</a></li>
-    <li><a href="/os/list">Liste des OS</a></li>
-</ul>
+<a class="nav-link" href="/ver/add">Ajouter une version</a>
 {% endblock navbar %}
 
 {% block content %}
@@ -20,6 +17,7 @@
             <th>Version de</th>
             <th>Date de sortie</th>
             <th>Plateforme(s)</th>
+            <th>Actions</th>
         </tr>
         </thead>
         {% for ver in versions %}
@@ -30,9 +28,11 @@
             <td>{{ver.operating_system.name}}</td>
             <td>{{ver.release_date}}</td>
             <td>{{ver.platforms}}</td>
-            <td><a href="/ver/details/{{ver.id}}/">Détails</a><td>
-            <td><a href="/ver/edit/{{ver.id}}/">Modifier</a><td>
-            <td><a href="/ver/delete/{{ver.id}}/">Supprimer</a><td>
+            <td>
+                <a type="button" class="btn btn-primary" href="/ver/details/{{ver.id}}/">Détails</a>
+                <a type="button" class="btn btn-primary" href="/ver/edit/{{ver.id}}/">Modifier</a>
+                <a type="button" class="btn btn-danger" href="/ver/delete/{{ver.id}}/">Supprimer</a>
+            <td>
         </tr>
         </tbody>
         {% endfor %}

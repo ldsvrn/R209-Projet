@@ -4,16 +4,10 @@
 
 {% block h1 %}Ajouter un sysème d'exploitation{% endblock h1 %} 
 
-{% block navbar %}
-<ul>
-    <li><a href="/os/list">Retour</a></li>
-</ul>
-{% endblock navbar %}
-
 {% block content %}
 <form method="post" action="/os/save/">
     {% csrf_token %}
     {{ form.as_ul }} <!-- permet d'afficher tous les champs sous forme d'une liste-->
-    <input type="submit" value="envoyer les données"\>
+    <input type="submit" class="btn btn-primary" value="Valider"\>
 </form>
 {% endblock content %}

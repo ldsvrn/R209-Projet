@@ -16,5 +16,7 @@ Il va sans dire que votre site doit être navigable à partir de la page d'accue
 
 Vous déposez dans un fichier doc, le lien du dépôt GitHub et l'url de votre page d'accueil. le Github doit rester actif jusqu'à la fin de l'année minimum.
 
-
-
+## Sujet choisi:
+Contenant: Systèmes d'exploitations
+Contenu: Version (de système d'exploitation)
+Les deux CRUD sont liés grâce au bouton "Détails" dans la liste des OS.
