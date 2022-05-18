@@ -11,7 +11,7 @@ urlpatterns = [
     path('os/delete/<int:id>/', views.delete_os),
     path('os/edit/<int:id>/', views.edit_os),
     path('os/save_edit/<int:id>/', views.save_edit_os),
-    path('os/versions/<int:id>/', views.list_os_versions),
+    # path('os/versions/<int:id>/', views.list_os_versions),
     path('os/', views.redirect_os),
     # TODO: mettre le int en 2eme position
 

@@ -4,15 +4,14 @@
 
 {% block h1 %}Liste des OS{% endblock h1 %} 
 
-{% block sidebar %}
+{% block navbar %}
 <ul>
     <li><a href="/os/add">Ajouter</a></li>
     <li><a href="/ver/list">List des versions</a></li>
 </ul>
-{% endblock sidebar %}
+{% endblock navbar %}
 
 {% block content %}
-    {% for os in operatingsystem %}
     <table class="table is-fullwidth is-hoverable">
         <thead>
         <tr>
@@ -22,6 +21,7 @@
             <th>License</th>
         </tr>
         </thead>
+        {% for os in operatingsystem %}
         <tbody>
         <tr>
             <th><a href="/os/details/{{os.id}}/">{{os.id}}</th>
@@ -29,11 +29,12 @@
             <td>{{os.developer}}</td>
             <td>{{os.software_license}}</td>
             <td><a href="/os/details/{{os.id}}/">Détails</a><td>
-            <td><a href="/os/versions/{{os.id}}/">Versions</a><td>
+            {% comment %} <td><a href="/os/versions/{{os.id}}/">Versions</a><td> {% endcomment %}
             <td><a href="/os/edit/{{os.id}}/">Modifier</a><td>
             <td><a href="/os/delete/{{os.id}}/">Supprimer</a><td>
         </tr>
         </tbody>
+        {% endfor %}
     </table>
-    {% endfor %}
+    
 {% endblock content %}

@@ -65,9 +65,9 @@ def save_edit_os(request, id):
     else:
         return render(request, "os/edit.html", {"form": osform, "id": id})
 
-def list_os_versions(request, id):
-    versions = models.versions.objects.filter(operating_system = id)
-    return render(request, "ver/list.html",{"versions" : versions})
+# def list_os_versions(request, id):
+#     versions = models.versions.objects.filter(operating_system = id)
+#     return render(request, "ver/list.html",{"versions" : versions})
 
 
 ### CONTENU

@@ -6,18 +6,18 @@
     Détails de l'OS
 {% endblock h1 %} 
 
-{% block sidebar %}
+{% block navbar %}
 <ul>
     <li><a href="/os/list">Retour</a></li>
 </ul>
-{% endblock sidebar %}
+{% endblock navbar %}
 
 {% block content %}
     <p>{{operatingsystem}} (ID: {{operatingsystem.id}})</p>
     <a href="/os/edit/{{operatingsystem.id}}">Modifier</a>
 
     <h2>Liste des versions</h2>
-    {% for ver in versions %}
+    <a href="/ver/add">Ajouter</a>
     <table class="table is-fullwidth is-hoverable">
         <thead>
         <tr>
@@ -29,6 +29,7 @@
         </tr>
         </thead>
         <tbody>
+        {% for ver in versions %}
         <tr>
             <th><a href="/ver/details/{{ver.id}}/">{{ver.id}}</th>
             <td>{{ver.operating_system.name}}</td>
@@ -39,7 +40,7 @@
             <td><a href="/ver/edit/{{ver.id}}/">Modifier</a><td>
             <td><a href="/ver/delete/{{ver.id}}/">Supprimer</a><td>
         </tr>
+        {% endfor %}
         </tbody>
     </table>
-    {% endfor %}
 {% endblock content %}

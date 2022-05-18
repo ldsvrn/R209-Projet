@@ -4,29 +4,30 @@
 
 {% block h1 %}Liste des version{% endblock h1 %} 
 
-{% block sidebar %}
+{% block navbar %}
 <ul>
     <li><a href="/ver/add">Ajouter</a></li>
     <li><a href="/os/list">Liste des OS</a></li>
 </ul>
-{% endblock sidebar %}
+{% endblock navbar %}
 
 {% block content %}
-    {% for ver in versions %}
     <table class="table is-fullwidth is-hoverable">
         <thead>
         <tr>
             <th><abbr title="ID">ID</abbr></th>
-            <th>Name</th>
-            <th>Developer</th>
-            <th>License</th>
+            <th>Nom</th>
+            <th>Version de</th>
+            <th>Date de sortie</th>
+            <th>Plateforme(s)</th>
         </tr>
         </thead>
+        {% for ver in versions %}
         <tbody>
         <tr>
             <th><a href="/ver/details/{{ver.id}}/">{{ver.id}}</th>
-            <td>{{ver.operating_system.name}}</td>
             <td>{{ver.name}}</td>
+            <td>{{ver.operating_system.name}}</td>
             <td>{{ver.release_date}}</td>
             <td>{{ver.platforms}}</td>
             <td><a href="/ver/details/{{ver.id}}/">Détails</a><td>
@@ -34,6 +35,6 @@
             <td><a href="/ver/delete/{{ver.id}}/">Supprimer</a><td>
         </tr>
         </tbody>
-    </table>
-    {% endfor %}
+        {% endfor %}
+    </table>  
 {% endblock content %}
