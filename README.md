@@ -20,3 +20,16 @@ Vous déposez dans un fichier doc, le lien du dépôt GitHub et l'url de votre p
 Contenant: Systèmes d'exploitations
 Contenu: Version (de système d'exploitation)
 Les deux CRUD sont liés grâce au bouton "Détails" dans la liste des OS.
+Pour l'instant, un bug empêche les nouvelles OS d'apparaître dans le drop down sans le redémarrage du serveur.
+
+## Mise en place:
+- Création du venv, installation dépendances
+```bash
+py -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+- Lancement du serveur
+```bash
+./manage.py runserver
+```

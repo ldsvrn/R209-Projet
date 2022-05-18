@@ -15,13 +15,13 @@ def add_os(request):
     # arrive en cas de retour sur cette page après une saisie invalide on récupère donc les données. 
     # Normalement nous ne devrions pas passer par ce chemin la pour le traitement des données
         form = OSForm(request.POST)
-        if form.is_valid(): # validation du formulaire.
-            opesys = form.save() # sauvegarde dans la base
+        if form.is_valid():
+            opesys = form.save()
             return HttpResponseRedirect("/os/list")
         else:
             return render(request,"os/add.html",{"form": form})
     else :
-        form = OSForm() # création d'un formulaire vide
+        form = OSForm()
         return render(request,"os/add.html",{"form" : form})
 
 def save_os(request):
@@ -46,9 +46,9 @@ def edit_os(request, id):
     osform = OSForm(model_to_dict(opesys))
     if request.method == "POST": 
         form = OSForm(request)
-        if form.is_valid(): # validation du formulaire.
-            opesys = form.save() # sauvegarde dans la base
-            return render(request,"os/details.html",{"operatingsystem" : opesys}) # envoie vers une page d'affichage du livre créé
+        if form.is_valid():
+            opesys = form.save()
+            return render(request,"os/details.html",{"operatingsystem" : opesys})
         else:
             return render(request,"os/add.html",{"form": form})
     else :
@@ -65,11 +65,6 @@ def save_edit_os(request, id):
     else:
         return render(request, "os/edit.html", {"form": osform, "id": id})
 
-# def list_os_versions(request, id):
-#     versions = models.versions.objects.filter(operating_system = id)
-#     return render(request, "ver/list.html",{"versions" : versions})
-
-
 ### CONTENU
 def __saveverform(form):
     temp = models.versions(
@@ -85,16 +80,14 @@ def list_ver(request):
 
 def add_ver(request):
     if request.method == "POST": 
-    # arrive en cas de retour sur cette page après une saisie invalide on récupère donc les données. 
-    # Normalement nous ne devrions pas passer par ce chemin la pour le traitement des données
         form = VersionForm(request)
-        if form.is_valid(): # validation du formulaire.
+        if form.is_valid():
             __saveverform(form)
             return list_os(request)
         else:
             return render(request,"ver/add.html",{"form": form})
     else :
-        form = VersionForm() # création d'un formulaire vide
+        form = VersionForm()
         return render(request,"ver/add.html",{"form" : form})
 
 def save_ver(request):
@@ -117,9 +110,9 @@ def edit_ver(request, id):
     verform = VersionForm(model_to_dict(ver))
     if request.method == "POST": 
         form = VersionForm(request)
-        if form.is_valid(): # validation du formulaire.
+        if form.is_valid():
             __saveverform(verform)
-            return render(request,"ver/details.html",{"version" : ver}) # envoie vers une page d'affichage du livre créé
+            return render(request,"ver/details.html",{"version" : ver})
         else:
             return render(request,"ver/add.html",{"form": form})
     else:

@@ -1,14 +1,6 @@
-@font-face {
-    font-family: noto;
-    src: url(./NotoSans-Regular.ttf);
-}
 
 html {
     scroll-behavior: smooth;
-}
-
-* {
-    font-family: "noto";
 }
 
 #content {
