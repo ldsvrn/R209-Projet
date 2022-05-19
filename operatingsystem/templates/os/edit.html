@@ -8,7 +8,7 @@
 {% block content %}
 <form method="post" action="/os/save_edit/{{id}}/">
     {% csrf_token %}
-    {{ form|crispy }} <!-- permet d'afficher tous les champs sous forme d'une liste-->
-    <input type="submit" value="envoyer les données"\>
+    {{ form|crispy }}
+    <input type="submit" class="btn btn-success" value="Valider"\>
 </form>
 {% endblock content %}
