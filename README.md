@@ -21,6 +21,7 @@ Contenant: Systèmes d'exploitations
 Contenu: Version (de système d'exploitation)
 Les deux CRUD sont liés grâce au bouton "Détails" dans la liste des OS.
 Pour l'instant, un bug empêche les nouvelles OS d'apparaître dans le drop down sans le redémarrage du serveur.
+Le projet utilise bootstrap. 
 
 ## Mise en place:
 - Création du venv, installation dépendances
