@@ -19,11 +19,17 @@ html {
 .secondary-title {
     margin: 1em;
 }
-/* td {
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-  
+td {
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 800px) {
+    #content {
+        width: 100%;
+    }
+}
+
+/* 
 tr:first-child {
     padding-left: 0;
 }
