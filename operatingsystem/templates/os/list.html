@@ -16,7 +16,7 @@
             <th>Name</th>
             <th>Developer</th>
             <th>License</th>
-            <th>Actions</th>
+            <th class="text-end">Actions</th>
         </tr>
         </thead>
         {% for os in operatingsystem %}
@@ -26,11 +26,11 @@
             <td>{{os.name}}</td>
             <td>{{os.developer}}</td>
             <td>{{os.software_license}}</td>
-            <td>
+            <td class="text-end">
                 <a type="button" class="btn btn-primary" href="/os/details/{{os.id}}/">Détails</a>
-                <a type="button" class="btn btn-primary" href="/os/edit/{{os.id}}/">Modifier</a>
+                <a type="button" class="btn btn-secondary" href="/os/edit/{{os.id}}/">Modifier</a>
                 <a type="button" class="btn btn-danger" href="/os/delete/{{os.id}}/">Supprimer</a>
-            <td>
+            </td>
         </tr>
         </tbody>
         {% endfor %}

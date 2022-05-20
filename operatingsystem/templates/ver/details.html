@@ -3,16 +3,10 @@
 {% block title %}Détails de la version{% endblock title %}
 
 {% block h1 %}
-    Détails de l'OS
+    Détails de la version
 {% endblock h1 %} 
-
-{% block navbar %}
-<ul>
-    <li><a href="/ver/list">Retour</a></li>
-</ul>
-{% endblock navbar %}
 
 {% block content %}
     <p>{{version}} (ID: {{version.id}})</p>
-    <a type="button" class="btn btn-primary" href="/ver/edit/{{version.id}}">Modifier</a>
+    <a type="button" class="btn btn-secondary" href="/ver/edit/{{version.id}}">Modifier</a>
 {% endblock content %}

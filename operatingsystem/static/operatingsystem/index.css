@@ -8,21 +8,18 @@ html {
     margin: auto;
 }
 
-#navbar {
-    width: 10%;
-    float: left;
+/* .navbar {
+    margin-bottom: 1em;
+} */
+
+.maint-title {
+    margin: 1em;
 }
 
-#navbar ul {
-    list-style-type: none;
+.secondary-title {
+    margin: 1em;
 }
-
-#top {
-    text-align: center;
-    background-color: red;
-}
-
-td {
+/* td {
     padding-left: 1em;
     padding-right: 1em;
   }
@@ -33,4 +30,4 @@ tr:first-child {
   
 tr:last-child {
     padding-right: 0;
-}
+} */

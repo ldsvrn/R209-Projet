@@ -13,7 +13,7 @@
 {% block content %}
     <p>{{operatingsystem}} (ID: {{operatingsystem.id}}) <a type="button" class="btn btn-primary" href="/os/edit/{{operatingsystem.id}}">Modifier</a></p>
 
-    <h2>Liste des versions</h2>
+    <h2 class="secondary-title">Liste des versions</h2>
     <table class="table is-fullwidth is-hoverable">
         <thead>
         <tr>
@@ -22,7 +22,7 @@
             <th>Nom</th>
             <th>Date de sortie</th>
             <th>Plateforme</th>
-            <th>Actions</th>
+            <th class="text-end">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -33,9 +33,9 @@
             <td>{{ver.name}}</td>
             <td>{{ver.release_date}}</td>
             <td>{{ver.platforms}}</td>
-            <td>
+            <td class="text-end">
                 <a type="button" class="btn btn-primary" href="/ver/details/{{ver.id}}/">Détails</a>
-                <a type="button" class="btn btn-primary" href="/ver/edit/{{ver.id}}/">Modifier</a>
+                <a type="button" class="btn btn-secondary" href="/ver/edit/{{ver.id}}/">Modifier</a>
                 <a type="button" class="btn btn-danger" href="/ver/delete/{{ver.id}}/">Supprimer</a>
             </td>
         </tr>

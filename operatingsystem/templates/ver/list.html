@@ -17,7 +17,7 @@
             <th>Version de</th>
             <th>Date de sortie</th>
             <th>Plateforme(s)</th>
-            <th>Actions</th>
+            <th class="text-end">Actions</th>
         </tr>
         </thead>
         {% for ver in versions %}
@@ -28,11 +28,11 @@
             <td>{{ver.operating_system.name}}</td>
             <td>{{ver.release_date}}</td>
             <td>{{ver.platforms}}</td>
-            <td>
+            <td class="text-end">
                 <a type="button" class="btn btn-primary" href="/ver/details/{{ver.id}}/">Détails</a>
-                <a type="button" class="btn btn-primary" href="/ver/edit/{{ver.id}}/">Modifier</a>
+                <a type="button" class="btn btn-secondary" href="/ver/edit/{{ver.id}}/">Modifier</a>
                 <a type="button" class="btn btn-danger" href="/ver/delete/{{ver.id}}/">Supprimer</a>
-            <td>
+            </td>
         </tr>
         </tbody>
         {% endfor %}
